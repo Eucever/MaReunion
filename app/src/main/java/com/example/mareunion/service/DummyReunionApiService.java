@@ -4,6 +4,7 @@ import com.example.mareunion.model.Reunion;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class DummyReunionApiService implements ReunionApiService{
 
@@ -21,6 +22,8 @@ public class DummyReunionApiService implements ReunionApiService{
 
     @Override
     public void addReunion(Reunion reunion) {
-        reunions.add(reunion);
+        if(!reunions.contains(reunion)) {
+            reunions.add(reunion);
+        }
     }
 }
