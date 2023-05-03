@@ -1,0 +1,15 @@
+
+
+plus de developpeurs facile a trouver
+facilite a trouver ressource et docu car java premier
+langage populair (communaute entraide)
+maturite langage beaucoup outil eprouvé (signe de qualité
+plus de meetup java
+mis a jour fréquente
+
+java diversifier
+
+entite metier (classe)
+reunion :nom, heure, lieu, participant
+lieu : endroit
+participant : mail
