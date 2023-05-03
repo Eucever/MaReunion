@@ -1,7 +1,7 @@
 package com.example.mareunion.repository;
 
 import com.example.mareunion.ui.timepicker.TimePickerContract;
-import com.example.mareunion.utils.DateEasy;
+import com.example.mareunion.ui.timepicker.utils.DateEasy;
 
 import java.time.Instant;
 

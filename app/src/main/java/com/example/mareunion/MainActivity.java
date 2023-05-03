@@ -11,7 +11,7 @@ import com.example.mareunion.ui.datepicker.DatePickerFactory;
 import com.example.mareunion.ui.datepicker.DatePickerFragment;
 import com.example.mareunion.ui.timepicker.TimePickerFactory;
 import com.example.mareunion.ui.timepicker.TimePickerFragment;
-import com.example.mareunion.utils.DateEasy;
+import com.example.mareunion.ui.timepicker.utils.DateEasy;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

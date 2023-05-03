@@ -1,6 +1,5 @@
 package com.example.mareunion;
 
-import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,11 +12,9 @@ import com.example.mareunion.model.Lieu;
 import com.example.mareunion.model.Participant;
 import com.example.mareunion.model.Reunion;
 import com.example.mareunion.service.ReunionApiService;
-import com.example.mareunion.utils.DateEasy;
+import com.example.mareunion.ui.timepicker.utils.DateEasy;
 
 import java.time.Instant;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 /**
