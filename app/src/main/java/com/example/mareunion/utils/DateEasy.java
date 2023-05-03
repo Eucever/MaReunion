@@ -2,7 +2,7 @@ package com.example.mareunion.utils;
 
 import android.util.Log;
 
-import com.openclassrooms.mareunion.BuildConfig;
+import com.example.mareunion.BuildConfig;
 
 import java.time.Instant;
 import java.time.LocalDate;
