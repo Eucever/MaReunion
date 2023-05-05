@@ -35,13 +35,19 @@
                     app:layout_constraintTop_toBottomOf="@+id/txtListPerson"
                     app:layout_constraintVertical_bias="0.90999997" />
 
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    app:layout_constraintBottom_toTopOf="@+id/editMail" />
+
                 <EditText
                     android:id="@+id/editMail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Email"
                     app:layout_constraintBottom_toTopOf="@+id/txtListPerson"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
@@ -73,14 +79,14 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:toolbarId="@+id/toolbar"
+            app:toolbarId="@+id/add_person_toolbar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
 
             app:contentScrim="?attr/colorPrimary">
 
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/add_person_toolbar"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_width="match_parent"></androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>

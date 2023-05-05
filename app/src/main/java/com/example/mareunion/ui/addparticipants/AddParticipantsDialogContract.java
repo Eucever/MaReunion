@@ -1,11 +1,11 @@
-package com.example.mareunion.ui.addpersons;
+package com.example.mareunion.ui.addparticipants;
 
 import com.example.mareunion.core.MvpInterface;
 import com.example.mareunion.model.Participant;
 
 import java.util.Set;
 
-public class AddParticipantContractDialog {
+public interface AddParticipantsDialogContract extends MvpInterface {
     interface Model extends MvpInterface.Model {
         // return the persons added by the user
         Set<Participant> getParticipantsSet();
@@ -51,5 +51,4 @@ public class AddParticipantContractDialog {
         // method called from the view, when the user click to validate the persons list
         void commit();
     }
-
 }
