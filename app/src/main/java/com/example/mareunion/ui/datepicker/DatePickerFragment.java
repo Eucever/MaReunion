@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.mareunion.ui.timepicker.utils.DateEasy;
+import com.example.mareunion.ui.utils.DateEasy;
 
 import java.time.Instant;
 import java.util.Objects;

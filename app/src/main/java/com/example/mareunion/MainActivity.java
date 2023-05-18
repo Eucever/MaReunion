@@ -4,18 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
-import android.os.Parcel;
 import android.util.Log;
 import android.widget.Button;
 
+import com.example.mareunion.di.DI;
 import com.example.mareunion.model.Participant;
 import com.example.mareunion.ui.addparticipants.AddParticipantsDialogFactory;
 import com.example.mareunion.ui.addparticipants.AddParticipantsDialogFragment;
+import com.example.mareunion.ui.addreunions.AddReunionDialogFactory;
+import com.example.mareunion.ui.addreunions.AddReunionDialogFragment;
 import com.example.mareunion.ui.datepicker.DatePickerFactory;
 import com.example.mareunion.ui.datepicker.DatePickerFragment;
 import com.example.mareunion.ui.timepicker.TimePickerFactory;
 import com.example.mareunion.ui.timepicker.TimePickerFragment;
-import com.example.mareunion.ui.timepicker.utils.DateEasy;
+import com.example.mareunion.ui.utils.DateEasy;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -33,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.addPerson)
     Button btnAddParticipants;
+
+    @BindView(R.id.addMeeting)
+    Button btnAddReunion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,5 +76,17 @@ public class MainActivity extends AppCompatActivity {
             fragment.display(fm);
         });
 
+        btnAddReunion.setOnClickListener(view -> {
+            AddReunionDialogFactory factory = new AddReunionDialogFactory();
+
+            AddReunionDialogFragment fragment = factory.getFragment();
+
+            fragment.display(fm);
+        });
+
+
+    }
+    public void updateReunionsFragments() {
+        DI.getReunionApiService().getReunions().stream().map(x -> x.getSujet()).forEach(System.out::println);
     }
 }

@@ -12,7 +12,7 @@ import java.time.Instant;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.example.mareunion.ui.timepicker.utils.DateEasy;
+import com.example.mareunion.ui.utils.DateEasy;
 
 /**
  * View (fragment) to pick a time

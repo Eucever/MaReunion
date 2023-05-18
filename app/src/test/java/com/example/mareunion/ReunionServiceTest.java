@@ -12,7 +12,7 @@ import com.example.mareunion.model.Lieu;
 import com.example.mareunion.model.Participant;
 import com.example.mareunion.model.Reunion;
 import com.example.mareunion.service.ReunionApiService;
-import com.example.mareunion.ui.timepicker.utils.DateEasy;
+import com.example.mareunion.ui.utils.DateEasy;
 
 import java.time.Instant;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.mareunion.ui.timepicker.utils;
+package com.example.mareunion.ui.utils;
 
 import android.util.Log;
 
