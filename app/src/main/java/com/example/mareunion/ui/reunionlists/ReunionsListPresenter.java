@@ -2,6 +2,8 @@ package com.example.mareunion.ui.reunionlists;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.mareunion.model.Reunion;
@@ -43,8 +45,8 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
         // update the view with the up to date filters
         mView.updateFilters(
                 mModel.getFilterLieu(),
-                DateEasy.localeDateTimeStringFromInstant(mModel.getFilterStartDate()),
-                DateEasy.localeDateTimeStringFromInstant(mModel.getFilterEndDate())
+                DateEasy.localeDateStringFromInstant(mModel.getFilterStartDate()),
+                DateEasy.localeDateStringFromInstant(mModel.getFilterEndDate())
         );
     }
 
@@ -106,13 +108,15 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
         // refresh the meetings list
         onRefreshReunionsListRequested();
         // expand or collapse the filters
-        if (!isError) {
+        //if (!isError) {
             mView.expandOrCollapseFilters();
-        }
+        //}
     }
 
     @Override
     public void setFilterStartDate(String filterStartDate) {
+        Log.d("COUCOU", filterStartDate.toString());
+
         if (filterStartDate.isEmpty()) {
             mModel.setFilterStartDate(null);
         } else {

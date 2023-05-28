@@ -2,49 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_meetings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/timepicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Timepicker"
-        app:layout_constraintBottom_toTopOf="@+id/datePicker"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="143dp" />
-
-    <Button
-        android:id="@+id/addPerson"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add person"
-        app:layout_constraintBottom_toTopOf="@+id/addMeeting"
-        tools:layout_editor_absoluteX="140dp" />
-
-    <Button
         android:id="@+id/addMeeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add meeting"
-        app:layout_constraintBottom_toTopOf="@+id/meetingList"
-        tools:layout_editor_absoluteX="136dp" />
-
-    <Button
-        android:id="@+id/meetingList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Meeting List"
+        android:text="+"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="135dp" />
-
-    <Button
-        android:id="@+id/datePicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date Picker"
-        app:layout_constraintBottom_toTopOf="@+id/addPerson"
-        tools:layout_editor_absoluteX="140dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

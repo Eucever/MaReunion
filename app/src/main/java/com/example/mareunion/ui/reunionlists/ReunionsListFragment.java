@@ -277,10 +277,10 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
         );
 
         // on touch on the start date text input filter, then clear the start date text input filter
-        mFilterStartDateTextInput.getEditText().setOnTouchListener(new View.OnTouchListener() {
+        /*mFilterStartDateTextInput.getEditText().setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                /*final int CHOSEN_DRAWABLE = 2; // pick the clear icon
+                final int CHOSEN_DRAWABLE = 2; // pick the clear icon
                 final EditText editText = mFilterStartDateTextInput.getEditText(); // get the edit text
                 Drawable clearIcon = editText.getCompoundDrawablesRelative()[CHOSEN_DRAWABLE];
                 // if the clear icon is touched, then notify the presenter the place has been reset
@@ -298,11 +298,13 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
                         // consume the event
                         return true;
                     }
-                }*/
+                }
                 // do not consume the event
                 return false;
             }
         });
+        */
+
 
         // on text change on the start date text input filter, then notify the presenter accordingly
         SimpleTextWatcherFactory factory = new SimpleTextWatcherFactory();

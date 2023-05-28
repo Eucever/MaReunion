@@ -243,6 +243,14 @@ public class DateEasy {
         return zdt.format(sDateTimeFormatter);
     }
 
+    public static String localeDateStringFromInstant(Instant instant){
+        if(instant == null) return null;
+        ZonedDateTime zdt = instant.atZone(sLocaleZone);
+        return zdt.format(sDateFormatter);
+    }
+
+
+
     /**
      * Convert given date to a special formatting String
      * @param instant the instant
@@ -252,6 +260,8 @@ public class DateEasy {
         ZonedDateTime zdt = instant.atZone(sLocaleZone);
         return zdt.format(sSpecialFormatter);
     }
+
+
 
 }
 
