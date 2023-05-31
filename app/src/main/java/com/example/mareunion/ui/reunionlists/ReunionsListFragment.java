@@ -83,19 +83,6 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
     // the end date text input filter
     @BindView(R.id.input_end_date)
     TextInputLayout mFilterEndDateTextInput;
-    /*
-    @BindDrawable(R.drawable.ic_baseline_place_24dp)
-    Drawable mPlaceIconDrawable;
-
-    @BindDrawable(R.drawable.ic_baseline_access_time_24dp)
-    Drawable mDateTimeIconDrawable;
-
-    @BindDrawable(R.drawable.ic_baseline_expand_more_24dp)
-    Drawable mExpandIconDrawable;
-
-    @BindDrawable(R.drawable.ic_baseline_clear_24dp)
-    Drawable mClearIconDrawable;
-    */
 
     public ReunionsListFragment() {
         // always call the super constructor
@@ -209,46 +196,6 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
                 }
         );
 
-        // on touch on the place text input filter, then notify the presenter accordingly
-        mFilterPlaceTextInput.getEditText().setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                /*final int CHOSEN_DRAWABLE = 2; // pick the clear icon
-                final EditText editText = mFilterPlaceTextInput.getEditText(); // get the edit text
-                Drawable clearIcon = editText.getCompoundDrawablesRelative()[CHOSEN_DRAWABLE];
-                // if the clear icon is touched, then notify the presenter the place has been reset
-                if (
-                        event.getAction() == MotionEvent.ACTION_UP &&
-                                clearIcon != null &&
-                                clearIcon.equals(mClearIconDrawable)
-                ) {
-                    // the touch x position, is next to the icon bounds
-                    if (event.getRawX() >= (mFilterPlaceTextInput.getEditText().getRight()
-                            - clearIcon.getBounds().width())
-                    ) {
-                        // reset the place text
-                        editText.setText("");
-                        mPresenter.saveFilterPlace("");
-                        // consume the event
-                        return true;
-                    }
-                }*/
-                // do not consume the event
-                return false;
-            }
-        });
-
-        // on text change on the place text input filter, then notify the presenter accordingly
-        SimpleTextWatcherFactory factory = new SimpleTextWatcherFactory();
-        /*mFilterPlaceTextInput.getEditText().addTextChangedListener(
-                factory.getDefault(
-                        mFilterPlaceTextInput,
-                        mPlaceIconDrawable,
-                        mClearIconDrawable,
-                        mPlaceIconDrawable,
-                        null
-                )
-        );*/
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -261,11 +208,11 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
                     if (hasFocus) {
                         // if we have focus, reset the error
                         mFilterStartDateTextInput.setErrorEnabled(false);
-                        mPresenter.setFilterStartDate(editText.toString());
+                        mPresenter.setFilterStartDate(editText.getText().toString());
                     } else {
                         // we use a different call the presenter, to notify the presenter that the
                         // we don't need to trigger the date picker dialog anymore
-                        mPresenter.setFilterStartDateManual(editText.toString());
+                        mPresenter.setFilterStartDateManual(editText.getText().toString());
                     }
                 });
 
@@ -275,48 +222,6 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
                         mFilterStartDateTextInput.getEditText().getText().toString()
                 )
         );
-
-        // on touch on the start date text input filter, then clear the start date text input filter
-        /*mFilterStartDateTextInput.getEditText().setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                final int CHOSEN_DRAWABLE = 2; // pick the clear icon
-                final EditText editText = mFilterStartDateTextInput.getEditText(); // get the edit text
-                Drawable clearIcon = editText.getCompoundDrawablesRelative()[CHOSEN_DRAWABLE];
-                // if the clear icon is touched, then notify the presenter the place has been reset
-                if (
-                        event.getAction() == MotionEvent.ACTION_UP &&
-                                clearIcon != null &&
-                                clearIcon.equals(mClearIconDrawable)
-                ) {
-                    // the touch x position, is next to the icon bounds
-                    if (event.getRawX() >= (mFilterStartDateTextInput.getEditText().getRight()
-                            - clearIcon.getBounds().width())
-                    ) {
-                        // reset the place text
-                        editText.setText("");
-                        // consume the event
-                        return true;
-                    }
-                }
-                // do not consume the event
-                return false;
-            }
-        });
-        */
-
-
-        // on text change on the start date text input filter, then notify the presenter accordingly
-        SimpleTextWatcherFactory factory = new SimpleTextWatcherFactory();
-        /*mFilterStartDateTextInput.getEditText().addTextChangedListener(
-                factory.getDefault(
-                        mFilterStartDateTextInput,
-                        mDateTimeIconDrawable,
-                        mClearIconDrawable,
-                        mDateTimeIconDrawable,
-                        mExpandIconDrawable
-                )
-        );*/
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -329,11 +234,11 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
                     if (hasFocus) {
                         // if we have focus, reset the error
                         mFilterEndDateTextInput.setErrorEnabled(false);
-                        mPresenter.setFilterEndDate(editText.toString());
+                        mPresenter.setFilterEndDate(editText.getText().toString());
                     } else {
                         // we use a different call the presenter, to notify the presenter that the
                         // we don't need to trigger the date picker dialog anymore
-                        mPresenter.setFilterEndDateManual(editText.toString());
+                        mPresenter.setFilterEndDateManual(editText.getText().toString());
                     }
                 });
 
@@ -344,46 +249,6 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
                         mFilterEndDateTextInput.getEditText().getText().toString()
                 )
         );
-
-        // on touch on the end date text input filter, then clear the end date text input filter
-        mFilterEndDateTextInput.getEditText().setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                /*final int CHOSEN_DRAWABLE = 2; // pick the clear icon
-                final EditText editText = mFilterEndDateTextInput.getEditText(); // get the edit text
-                Drawable clearIcon = editText.getCompoundDrawablesRelative()[CHOSEN_DRAWABLE];
-                // if the clear icon is touched, then notify the presenter the place has been reset
-                if (
-                        event.getAction() == MotionEvent.ACTION_UP &&
-                                clearIcon != null &&
-                                clearIcon.equals(mClearIconDrawable)
-                ) {
-                    // the touch x position, is next to the icon bounds
-                    if (event.getRawX() >= (mFilterEndDateTextInput.getEditText().getRight()
-                            - clearIcon.getBounds().width())
-                    ) {
-                        // reset the place text
-                        editText.setText("");
-                        // consume the event
-                        return true;
-                    }
-                }*/
-                // do not consume the event
-                return false;
-            }
-        });
-
-        // on text change on the end date text input filter, then notify the presenter accordingly
-        SimpleTextWatcherFactory factory = new SimpleTextWatcherFactory();
-        /*mFilterEndDateTextInput.getEditText().addTextChangedListener(
-                factory.getDefault(
-                        mFilterEndDateTextInput,
-                        mDateTimeIconDrawable,
-                        mClearIconDrawable,
-                        mDateTimeIconDrawable,
-                        mExpandIconDrawable
-                )
-        );*/
     }
 
 
@@ -450,15 +315,6 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
         Objects.requireNonNull(mFilterEndDateTextInput.getEditText()).setText(
                 filterEndDate == null ? "" : filterEndDate
         );
-
-        // if the place filter is empty, do not display the clear icon. Otherwise, display it
-        /*setCompoundDrawables(mFilterPlaceTextInput, mPlaceIconDrawable,
-                filterPlace.isEmpty() ? null : mClearIconDrawable);
-        // reset the start date icons, to the time and clear icons
-        setCompoundDrawables(mFilterStartDateTextInput, mDateTimeIconDrawable, mClearIconDrawable);
-        // reset the end date icons, to the time and clear icons
-        setCompoundDrawables(mFilterEndDateTextInput, mDateTimeIconDrawable, mClearIconDrawable);
-        */
         // put the selection cursor at the end of the text
         mFilterPlaceTextInput.getEditText().setSelection(
                 mFilterPlaceTextInput.getEditText().getText().length()
