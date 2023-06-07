@@ -29,6 +29,7 @@ import com.example.mareunion.model.Reunion;
 import com.example.mareunion.service.ReunionApiService;
 import com.example.mareunion.ui.utils.DateEasy;
 import com.example.mareunion.utils.DropViewAction;
+import com.example.mareunion.utils.MatcherFactory;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -39,6 +40,8 @@ import java.time.Instant;
 
 @RunWith(AndroidJUnit4.class)
 public class ReunionInstrumentedTest {
+
+    private MatcherFactory matcherFactory = new MatcherFactory();
 
     private Reunion reu1;
 
@@ -85,6 +88,7 @@ public class ReunionInstrumentedTest {
         mService.addReunion(reu2);
         mService.addReunion(reu3);
 
+        //Solution de contournement pour donner le focus sur le premier champs
         onView(allOf(withId(R.id.button_open_filtre), isDisplayed()))
                 .perform(click());
         onView(allOf(withId(R.id.button_close_filtre), isDisplayed()))
@@ -110,19 +114,64 @@ public class ReunionInstrumentedTest {
     }
     @Test
     public void meetingListTest_CreateMeeting_ShouldCreateReu(){
+        final int EXPECTED_COUNT_AFTERCREATION = 4;
         onView(allOf(withId(R.id.addMeeting),isDisplayed()))
                 .perform(click());
-        onView(allOf(withId(R.id.addMeeting_LieuTextInput),isDisplayed()))
-                .perform(replaceText("Lieu 55"), closeSoftKeyboard());
 
-        onView(allOf(withId(R.id.addMeeting_SujetTextInput),isDisplayed()))
+        onView(allOf(
+                matcherFactory.childAtPosition(
+                        matcherFactory.childAtPosition(
+                                withId(R.id.addMeeting_LieuTextInput), 0
+                        ),
+                        0
+                ),
+                isDisplayed()
+        ))
+                .perform(replaceText("A place"), closeSoftKeyboard());
+
+        onView(allOf(
+                matcherFactory.childAtPosition(
+                        matcherFactory.childAtPosition(
+                                withId(R.id.addMeeting_SujetTextInput), 0
+                        ),
+                        0
+                ),
+                isDisplayed()))
                 .perform(replaceText("Sujet 55"),closeSoftKeyboard());
 
         onView(allOf(withId(R.id.meeting_creation_dialog_toolbar_save_item)))
                 .perform(click());
-        pressBack();
+
         onView(allOf(withId(R.id.reunion_list_recyclerview),isDisplayed()))
-                .check(withItemCount(4));
+                .check(withItemCount(EXPECTED_COUNT_AFTERCREATION));
+
+        }
+
+    @Test
+    public void meetingListTest_FilterMeeting(){
+        final int EXPECTED_COUNT_AFTERFILTER = 1;
+        onView(allOf(withId(R.id.reunion_filtre_cardview),isDisplayed()))
+                .perform(click());
+
+        onView(allOf(
+                matcherFactory.childAtPosition(
+                        matcherFactory.childAtPosition(
+                                withId(R.id.input_lieu), 0
+                        ),
+                        0),
+                isDisplayed()
+        ))
+                // set the place filter to Salle
+                .perform(replaceText("Salle A1"), closeSoftKeyboard());
+
+        // validate the filters
+        onView(allOf(withId(R.id.button_apply), isDisplayed()))
+                .perform(click());
+
+        // check the count output
+        onView(allOf(withId(R.id.reunion_list_recyclerview), isDisplayed()))
+                .check(withItemCount(EXPECTED_COUNT_AFTERFILTER));
+
 
         }
     }
