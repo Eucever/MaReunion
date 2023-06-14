@@ -25,6 +25,7 @@
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="62dp"
                     android:layout_height="72dp"
+                    android:contentDescription="Ajouter la personne"
                     android:ellipsize="middle"
                     android:text="+"
                     android:textSize="34sp"
@@ -39,13 +40,17 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
-                    app:layout_constraintBottom_toTopOf="@+id/editMail" />
+                    android:layout_marginStart="24dp"
+                    android:text="Email :"
+                    app:layout_constraintBottom_toTopOf="@+id/editMail"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <EditText
                     android:id="@+id/editMail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:contentDescription="Renseigner l'Email de la personne"
                     android:ems="10"
                     android:inputType="textPersonName"
                     app:layout_constraintBottom_toTopOf="@+id/txtListPerson"
@@ -73,22 +78,22 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
 
-        android:layout_height="192dp"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="130dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:toolbarId="@+id/add_person_toolbar"
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
 
-            app:contentScrim="?attr/colorPrimary">
+            app:toolbarId="@+id/add_person_toolbar">
 
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/add_person_toolbar"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_width="match_parent"></androidx.appcompat.widget.Toolbar>
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

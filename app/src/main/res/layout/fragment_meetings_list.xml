@@ -23,6 +23,7 @@
                 android:id="@+id/filtre_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="Renseigner le lieu a filtrer"
                 android:text="Filtrer par date et lieu"
                 android:textSize="24sp" />
 
@@ -43,6 +44,7 @@
                 android:id="@+id/input_start_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="Renseigner la date de début a filtrer"
                 android:hint="Filtrer par date de début"
                 android:visibility="gone">
 
@@ -57,6 +59,7 @@
                 android:id="@+id/input_end_date"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="Renseigner la date de fin a filtrer"
                 android:hint="Filtrer par date de fin"
                 android:visibility="gone">
 
@@ -78,6 +81,7 @@
                 android:id="@+id/button_open_filtre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:contentDescription="Bouton d'ouverture de filtre"
                 android:visibility="visible"
                 app:srcCompat="@android:drawable/arrow_down_float" />
 
@@ -85,6 +89,7 @@
                 android:id="@+id/button_close_filtre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:contentDescription="bouton de fermeture de filtre"
                 android:visibility="gone"
                 app:srcCompat="@android:drawable/arrow_up_float" />
 

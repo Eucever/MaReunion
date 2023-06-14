@@ -25,6 +25,7 @@
                     android:id="@+id/meeting_addperson_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="ajouter des personnes"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.93"
@@ -48,6 +49,7 @@
                     android:id="@+id/addMeeting_SujetTextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:contentDescription="Renseigner le sujet"
                     app:layout_constraintBottom_toTopOf="@+id/addMeeting_LieuTextInput"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.49"
@@ -66,6 +68,7 @@
                     android:id="@+id/addMeeting_LieuTextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:contentDescription="Renseigner le lieu"
                     app:layout_constraintBottom_toTopOf="@+id/addMeeting_DateTextInput"
                     app:layout_constraintTop_toBottomOf="@+id/addMeeting_SujetTextInput">
 
@@ -85,6 +88,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:contentDescription="Renseigner la date"
                         android:hint="Date" />
                 </com.google.android.material.textfield.TextInputLayout>
 
