@@ -8,8 +8,10 @@ import java.util.Set;
 public class AddParticipantsDialogFactory {
 
     public AddParticipantsDialogFragment getFragment(
+
             Set<Participant> participants,
-            AddParticipantsDialogContract.Model.OnParticipantsSetFinalChangedListener onParticipantsChangedListener){
+            AddParticipantsDialogContract.Model.OnParticipantsSetFinalChangedListener onParticipantsChangedListener)
+    {
         AddParticipantsDialogContract.Model model = new AddParticipantsFakeRepository();
         model.setInitialParticipants(participants);
         model.setOnParticipantsSetFinalChangedListener(onParticipantsChangedListener::onParticipantsListFinalChanged);

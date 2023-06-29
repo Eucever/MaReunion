@@ -315,6 +315,7 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
         Objects.requireNonNull(mFilterEndDateTextInput.getEditText()).setText(
                 filterEndDate == null ? "" : filterEndDate
         );
+
         // put the selection cursor at the end of the text
         mFilterPlaceTextInput.getEditText().setSelection(
                 mFilterPlaceTextInput.getEditText().getText().length()

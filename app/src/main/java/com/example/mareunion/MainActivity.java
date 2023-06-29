@@ -45,59 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         final FragmentManager fm = getSupportFragmentManager();
-        //traitement de l'action sur le bouton timepicker
 
-        /*
-
-        btnTimepicker.setOnClickListener(view -> {
-            TimePickerFactory factory= new TimePickerFactory();
-
-            TimePickerFragment fragment = factory.getFragment(DateEasy.now(),(timePicked)->{
-                Log.i("debug","Instant selection par l'utilisateur " + timePicked);
-            });
-            fragment.display(fm);
-        });
-
-        btnDatepicker.setOnClickListener(view -> {
-            DatePickerFactory factory = new DatePickerFactory();
-
-            DatePickerFragment fragment = factory.getFragment(DateEasy.now(),DateEasy.now(),true,(datePicked)->{
-                Log.i("debug","Instant selection par l'utilisateur " + datePicked);
-            });
-            fragment.display(fm);
-        });
-        btnAddParticipants.setOnClickListener(view -> {
-            AddParticipantsDialogFactory factory = new AddParticipantsDialogFactory();
-
-            Set<Participant> participantSet = new TreeSet<>();
-
-            AddParticipantsDialogFragment fragment = factory.getFragment(participantSet, (participantSet2)->{
-                participantSet2.stream().map(x->x.getMail()).forEach(System.out::println);
-            });
-            fragment.display(fm);
-        });
-
-        btnAddReunion.setOnClickListener(view -> {
-            AddReunionDialogFactory factory = new AddReunionDialogFactory();
-
-            AddReunionDialogFragment fragment = factory.getFragment();
-
-            fragment.display(fm);
-        });
-
-        btnMeetingList.setOnClickListener(v -> {
-            // create the fragment for the meetings list
-            ReunionsListFragment f = ReunionsListFragment.newInstance();
-            // create the model for the meetings list
-            ReunionsListFakeRepository m = new ReunionsListFakeRepository();
-            // create the presenter for the meetings list
-            ReunionsListPresenter p = new ReunionsListPresenter(f, m);
-            // display the fragment
-            fm
-                    .beginTransaction().add(R.id.activity_meetings,f).commit();
-        });
-
-        */
         ReunionsListFragment mReunionsListFragment = (ReunionsListFragment)
                 getSupportFragmentManager()
                         .findFragmentById(R.id.activity_meetings);
