@@ -24,7 +24,7 @@ public class TimePickerFactory {
         model.setInitialDateTime(initialDateTime);
         model.setOnTimeChangedListener(onTimeChangedListener);
 
-        // create the fragment (view)
+        // create the fragment (view)²&
         TimePickerFragment fragment = TimePickerFragment.newInstance();
 
         // create the presenter

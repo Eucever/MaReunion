@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -24,7 +23,6 @@ import com.example.mareunion.model.Reunion;
 import com.example.mareunion.ui.addreunions.AddReunionDialogFactory;
 import com.example.mareunion.ui.datepicker.DatePickerFactory;
 import com.example.mareunion.ui.datepicker.DatePickerFragment;
-import com.example.mareunion.ui.utils.SimpleTextWatcherFactory;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.time.Instant;
@@ -51,6 +49,8 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
     /**
      * Ui components
      */
+
+
 
     // the recycler view to display the list of the meetings
     @BindView(R.id.reunion_list_recyclerview)
@@ -328,26 +328,6 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
         );
     }
 
-    /**
-     * Change icons around the text input layout
-     * @param textInputLayout the text input layout
-     * @param drawableStart the start icon
-     * @param drawableEnd the end icon
-     */
-    private void setCompoundDrawables(TextInputLayout textInputLayout,
-                                      Drawable drawableStart,
-                                      Drawable drawableEnd
-    ){
-
-        Objects.requireNonNull(textInputLayout.getEditText())
-                .setCompoundDrawablesRelativeWithIntrinsicBounds(
-                        drawableStart,
-                        null,
-                        drawableEnd,
-                        null
-                );
-
-    }
 
     /**
      * Method called by the presenter, to display the date picker dialog

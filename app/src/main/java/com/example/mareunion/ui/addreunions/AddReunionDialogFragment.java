@@ -8,7 +8,6 @@ import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -32,7 +31,6 @@ import com.example.mareunion.ui.utils.SimpleTextWatcher;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 

@@ -4,30 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 
-import com.example.mareunion.di.DI;
-import com.example.mareunion.model.Participant;
-import com.example.mareunion.model.Reunion;
 import com.example.mareunion.repository.ReunionsListFakeRepository;
-import com.example.mareunion.ui.addparticipants.AddParticipantsDialogFactory;
-import com.example.mareunion.ui.addparticipants.AddParticipantsDialogFragment;
-import com.example.mareunion.ui.addreunions.AddReunionDialogFactory;
-import com.example.mareunion.ui.addreunions.AddReunionDialogFragment;
-import com.example.mareunion.ui.datepicker.DatePickerFactory;
-import com.example.mareunion.ui.datepicker.DatePickerFragment;
 import com.example.mareunion.ui.reunionlists.ReunionsListFragment;
 import com.example.mareunion.ui.reunionlists.ReunionsListPresenter;
-import com.example.mareunion.ui.timepicker.TimePickerFactory;
-import com.example.mareunion.ui.timepicker.TimePickerFragment;
-import com.example.mareunion.ui.utils.DateEasy;
 
-import java.util.Set;
-import java.util.TreeSet;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnAddReunion;
 
     private ReunionsListPresenter mReunionListpresenter;
+
+
 
 
 
