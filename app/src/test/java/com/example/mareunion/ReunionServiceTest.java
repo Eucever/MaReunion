@@ -75,6 +75,7 @@ public class ReunionServiceTest{
         assertEquals(service.getReunions().get(2), reunion3);
     }
 
+
     @Test
     public void deleteReunionsWithSuccess(){
         service.addReunion(reunion1);

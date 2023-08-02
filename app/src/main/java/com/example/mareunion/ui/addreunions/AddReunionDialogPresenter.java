@@ -58,6 +58,11 @@ public class AddReunionDialogPresenter implements AddReunionDialogContract.Prese
             isError = true;
             mView.setErrorDateIsInWrongFormat();
         }
+        //Empty participants list condition
+        if (mModel.getInvitedParticipants().isEmpty()){
+            isError= true;
+            mView.setErrorParticipantsListIsEmpty();
+        }
 
         if(!isError){
             mModel.saveReunionDate(reunionDate);

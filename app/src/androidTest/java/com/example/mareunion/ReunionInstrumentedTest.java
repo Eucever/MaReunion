@@ -139,6 +139,17 @@ public class ReunionInstrumentedTest {
                 isDisplayed()))
                 .perform(replaceText("Sujet 55"),closeSoftKeyboard());
 
+        onView(allOf(withId(R.id.meeting_addperson_button)))
+                .perform(click());
+
+        onView(allOf(withId(R.id.editMail),isDisplayed()))
+                .perform(replaceText("adresse1@gmail.com"),closeSoftKeyboard());
+
+        onView(allOf(withId(R.id.btnAddperson)))
+                .perform(click());
+        onView(allOf(withId(R.id.meeting_creation_dialog_toolbar_save_item)))
+                .perform(click());
+
         onView(allOf(withId(R.id.meeting_creation_dialog_toolbar_save_item)))
                 .perform(click());
 
@@ -146,6 +157,29 @@ public class ReunionInstrumentedTest {
                 .check(withItemCount(EXPECTED_COUNT_AFTERCREATION));
 
         }
+    @Test
+    public void meetingListTest_CreateMeeting_ShouldNotCreateReu_IfSujetIsEmpty(){
+        onView(allOf(withId(R.id.addMeeting),isDisplayed()))
+                .perform(click());
+
+        onView(allOf(
+                matcherFactory.childAtPosition(
+                        matcherFactory.childAtPosition(
+                                withId(R.id.addMeeting_LieuTextInput), 0
+                        ),
+                        0
+                ),
+                isDisplayed()
+        ))
+                .perform(replaceText("A place"), closeSoftKeyboard());
+
+        onView(allOf(withId(R.id.meeting_creation_dialog_toolbar_save_item)))
+                .perform(click());
+
+        onView(allOf(withId(R.id.addMeeting_cardView)))
+                .check(matches(isDisplayed()));
+
+    }
 
     @Test
     public void meetingListTest_FilterMeeting(){

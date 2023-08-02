@@ -254,6 +254,9 @@ public class AddReunionDialogFragment extends DialogFragment implements AddReuni
     public void setErrorDateIsInWrongFormat() {
         mDateTextInput.setError("Date in wrong format");
     }
+    @Override
+    public void setErrorParticipantsListIsEmpty(){mParticipantsFullListText.setError("List Is empty");
+    }
 
     @Override
     public void triggerDatePickerDialog(Instant reunionDate) {

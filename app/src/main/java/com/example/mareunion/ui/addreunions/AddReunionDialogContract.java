@@ -52,6 +52,9 @@ public interface AddReunionDialogContract {
         //sets an error on the text date if the format is wrong
         void setErrorDateIsInWrongFormat();
 
+        //sets an error on the Participants list if it's empty
+        void setErrorParticipantsListIsEmpty();
+
         //triggers the date picker dialog
         void triggerDatePickerDialog(Instant reunionDate);
 
