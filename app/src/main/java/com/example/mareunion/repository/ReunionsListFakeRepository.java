@@ -46,14 +46,15 @@ public class ReunionsListFakeRepository implements ReunionsListContract.Model {
      * Constructor
      */
     public ReunionsListFakeRepository() {
-        // init the external model service, thanks to dependency injection
+        //Initialise le service
         mReunionsApiService = DI.getReunionApiService();
-        // init the start date to now
+        //Initialise le filtre de départ a aujourd'hui
         mFilterStartDate = DateEasy.startOfDay(DateEasy.now());
-        // init the end date to now plus one year
+        //Initialise le filtre de fin a dans un an
         mFilterEndDate = DateEasy.endOfDay(DateEasy.plusOneYear(DateEasy.now()));
-        // init the place to empty string
+        //Initialise le filtre de lieu a rien
         mFilterPlace = "";
+
     }
 
     /**

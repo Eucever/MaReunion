@@ -25,6 +25,10 @@ public class ReunionsListAdapter extends RecyclerView.Adapter<ReunionsListViewho
 
     private final DropClickListener mOnDropClickListener;
 
+    private void setReunions(List<Reunion> reunions) {
+        mReunions = checkNotNull(reunions);
+    }
+
     public ReunionsListAdapter(List<Reunion> reunions, DropClickListener onDropClickListener) {
         mOnDropClickListener = onDropClickListener;
         setReunions(reunions);
@@ -40,12 +44,12 @@ public class ReunionsListAdapter extends RecyclerView.Adapter<ReunionsListViewho
     @NonNull
     @Override
     public ReunionsListViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // context of the parent view
+        // On recupere le contexte
         Context context = parent.getContext();
-        // inflate the view holder layout
+        // On declare le inflater depuis le context
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.fragment_meetings, parent, false);
-        // return the view holder
+        // renvoie le view holder completé
         return new ReunionsListViewholder(view, mOnDropClickListener);
     }
 
@@ -66,19 +70,13 @@ public class ReunionsListAdapter extends RecyclerView.Adapter<ReunionsListViewho
      * @return the number of meetings to be displayed
      */
     @Override
-    public int getItemCount() {
-        return mReunions.size();
-    }
+    public int getItemCount() { return mReunions.size(); }
 
     @SuppressLint("NotifyDataSetChanged")
     public void updateReunions(List<Reunion> reunions) {
-        // set the list of meeting to be displayed
         setReunions(reunions);
-        // notify the data set changed globally
         notifyDataSetChanged();
     }
 
-    private void setReunions(List<Reunion> reunions) {
-        mReunions = checkNotNull(reunions);
-    }
+
 }

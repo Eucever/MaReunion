@@ -36,6 +36,7 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
 
     @Override
     public void onRefreshReunionsListRequested() {
+        Log.d("OnRefresh","List rafraichissements");
         // get the meetings list, either filtered or not
         List<Reunion> reunions = mModel.getFilteredAndSortedReunions();
         // buffer the list, in order to ease the deletion of a meeting
@@ -48,12 +49,6 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
                 DateEasy.localeDateStringFromInstant(mModel.getFilterStartDate()),
                 DateEasy.localeDateStringFromInstant(mModel.getFilterEndDate())
         );
-    }
-
-    @Override
-    public void onCreateReunionRequested() {
-        // so we trigger the meeting registration dialog
-        mView.triggerReunionRegistrationDialog();
     }
 
     @Override

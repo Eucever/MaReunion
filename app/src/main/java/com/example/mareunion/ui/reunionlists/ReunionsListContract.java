@@ -72,9 +72,6 @@ public interface ReunionsListContract {
         // refresh the meetings list requested
         void onRefreshReunionsListRequested();
 
-        // on create new meeting request
-        void onCreateReunionRequested();
-
         // on filters have changed
         void onFiltersChanged(String filterLieu, String filterStartDate, String filterEndDate);
 

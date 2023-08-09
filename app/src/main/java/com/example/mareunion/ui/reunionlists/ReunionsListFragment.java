@@ -5,6 +5,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -119,7 +120,7 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
         // Find the floating action button (add a meeting), then add the setOnClickListener logic
         Objects.requireNonNull(getActivity())
                 .findViewById(R.id.addMeeting)
-                .setOnClickListener(v -> mPresenter.onCreateReunionRequested());
+                .setOnClickListener(v -> triggerReunionRegistrationDialog());
         // Build the recycler view
         mMeetingsListAdapter = new ReunionsListAdapter(
                 // empty list of meetings at startup
@@ -268,6 +269,7 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
      */
     @Override
     public void triggerReunionRegistrationDialog() {
+        Log.d("OnCreate", "Creation du fragment");
         AddReunionDialogFactory factory = new AddReunionDialogFactory();
         factory
                 .getFragment()
