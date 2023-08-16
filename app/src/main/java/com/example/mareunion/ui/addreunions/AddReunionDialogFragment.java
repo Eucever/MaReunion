@@ -258,6 +258,10 @@ public class AddReunionDialogFragment extends DialogFragment implements AddReuni
     public void setErrorParticipantsListIsEmpty(){mParticipantsFullListText.setError("List Is empty");
     }
 
+    public void cleanUpErrorMessage(){
+        mParticipantsFullListText.setError(null);
+    }
+
     @Override
     public void triggerDatePickerDialog(Instant reunionDate) {
         DatePickerFactory factory = new DatePickerFactory();
@@ -299,6 +303,7 @@ public class AddReunionDialogFragment extends DialogFragment implements AddReuni
 
                         (participants) -> mPresenter.onParticipantsChanged(participants)
                 );
+        cleanUpErrorMessage();
 
         fragment.display(getFragmentManager());
 
