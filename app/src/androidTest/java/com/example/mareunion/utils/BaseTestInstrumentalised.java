@@ -24,20 +24,20 @@ import org.junit.Rule;
 
 import java.time.Instant;
 
-public class BaseTest {
-    private MatcherFactory matcherFactory = new MatcherFactory();
+public class BaseTestInstrumentalised {
+    protected MatcherFactory matcherFactory = new MatcherFactory();
 
-    private Reunion reu1;
+    protected Reunion reu1;
 
-    private Reunion reu2;
+    protected Reunion reu2;
 
-    private Reunion reu3;
+    protected Reunion reu3;
 
     @Rule
     public ActivityScenarioRule<MainActivity> mainActivityTestRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
-    private ReunionApiService mService;
+    protected ReunionApiService mService;
     @Before
     public void setUp(){
         mainActivityTestRule.getScenario().onActivity(activity -> {
