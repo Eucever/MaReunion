@@ -89,7 +89,7 @@ public class ReunionsListViewholder extends RecyclerView.ViewHolder {
 
     /**
      * Set the meeting to be displayed as item of the recycler view
-     * @param meeting the meeting to be displayed as item of the recycler view
+     * @param reunion the meeting to be displayed as item of the recycler view
      */
     public void setMeeting(Reunion reunion) {
         // set the meeting to display

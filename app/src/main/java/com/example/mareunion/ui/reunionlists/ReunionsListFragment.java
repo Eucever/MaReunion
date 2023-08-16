@@ -3,7 +3,6 @@ package com.example.mareunion.ui.reunionlists;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -84,6 +84,9 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
     // the end date text input filter
     @BindView(R.id.input_end_date)
     TextInputLayout mFilterEndDateTextInput;
+
+    @BindView(R.id.txtNbTotalReus)
+    TextView txtNbTotalreus;
 
     public ReunionsListFragment() {
         // always call the super constructor
@@ -264,6 +267,11 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
         mMeetingsListAdapter.updateReunions(reunions);
     }
 
+    @Override
+    public void updateNbReunions(int nbFilteredReunions, int nbTotalReunion){
+        txtNbTotalreus.setText(nbFilteredReunions+"/"+nbTotalReunion);
+    }
+
     /**
      * Method called by the presenter, to display the meeting registration (add) dialog
      */
@@ -299,14 +307,30 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
     }
 
     /**
+     * Cleanup errors
+     */
+
+    private void cleanupErrors(){
+        // Cleanup error messages
+        mFilterStartDateTextInput.setError(null);
+        mFilterEndDateTextInput.setError(null);
+    }
+
+    /**
      * Update the filters text input label, and reset the icons around every filter text input
      * Update also the cursor position in the text input, to meet the user expectations
      * @param filterPlace the place filter
      * @param filterStartDate the start date filter
      * @param filterEndDate the end date filter
      */
+
+
     @Override
     public void updateFilters(String filterPlace, String filterStartDate, String filterEndDate) {
+
+        //Cleanup errors function
+        cleanupErrors();
+
         // update the place text filter
         Objects.requireNonNull(mFilterPlaceTextInput.getEditText()).setText(filterPlace);
         // update the start date text filter

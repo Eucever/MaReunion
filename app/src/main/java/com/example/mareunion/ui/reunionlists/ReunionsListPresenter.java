@@ -41,6 +41,8 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
         List<Reunion> reunions = mModel.getFilteredAndSortedReunions();
         // buffer the list, in order to ease the deletion of a meeting
         mFilteredAndSortedMeetings = reunions;
+
+        mView.updateNbReunions(mFilteredAndSortedMeetings.size(), mModel.getAllReunions().size());
         // update the view with the fresh meetings list
         mView.updateReunions(reunions);
         // update the view with the up to date filters
@@ -100,12 +102,14 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
         }
         // if there is no error
         mModel.setFilterLieu(filterLieu);
-        // refresh the meetings list
-        onRefreshReunionsListRequested();
-        // expand or collapse the filters
-        //if (!isError) {
+        // if no error
+        if (!isError) {
+            // collapse filter
             mView.expandOrCollapseFilters();
-        //}
+            // refresh the meetings list
+            onRefreshReunionsListRequested();
+        }
+
     }
 
     @Override
@@ -114,56 +118,64 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
 
         if (filterStartDate.isEmpty()) {
             mModel.setFilterStartDate(null);
+            mView.triggerDatePickerDialog(mModel.getFilterStartDate(), true);
         } else {
             Instant tmp = DateEasy.parseDateStringToInstant(filterStartDate);
             if (tmp != null) {
                 mModel.setFilterStartDate(tmp);
+                mView.triggerDatePickerDialog(mModel.getFilterStartDate(), true);
             }
         }
-        mView.triggerDatePickerDialog(mModel.getFilterStartDate(), true);
+
     }
 
     @Override
     public void setFilterStartDateManual(String filterStartDate) {
         if (filterStartDate.isEmpty()) {
             mModel.setFilterStartDate(null);
+            onRefreshReunionsListRequested();
         } else {
             Instant tmp = DateEasy.parseDateStringToInstant(filterStartDate);
             if (tmp != null) {
                 mModel.setFilterStartDate(tmp);
+                onRefreshReunionsListRequested();
             } else {
                 mView.setErrorFilterStartDate();
             }
         }
-        onRefreshReunionsListRequested();
+
     }
 
     @Override
     public void setFilterEndDate(String filterEndDate) {
         if (filterEndDate.isEmpty()) {
             mModel.setFilterEndDate(null);
+            mView.triggerDatePickerDialog(mModel.getFilterEndDate(), false);
         } else {
             Instant tmp = DateEasy.parseDateStringToInstant(filterEndDate);
             if (tmp != null) {
                 mModel.setFilterEndDate(tmp);
+                mView.triggerDatePickerDialog(mModel.getFilterEndDate(), false);
             }
         }
-        mView.triggerDatePickerDialog(mModel.getFilterEndDate(), false);
+
     }
 
     @Override
     public void setFilterEndDateManual(String filterEndDate) {
         if (filterEndDate.isEmpty()) {
             mModel.setFilterEndDate(null);
+            onRefreshReunionsListRequested();
         } else {
             Instant tmp = DateEasy.parseDateStringToInstant(filterEndDate);
             if (tmp != null) {
                 mModel.setFilterEndDate(tmp);
+                onRefreshReunionsListRequested();
             } else {
                 mView.setErrorFilterEndDate();
             }
         }
-        onRefreshReunionsListRequested();
+
     }
 
     @Override

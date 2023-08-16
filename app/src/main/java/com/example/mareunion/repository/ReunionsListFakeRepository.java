@@ -56,6 +56,10 @@ public class ReunionsListFakeRepository implements ReunionsListContract.Model {
         mFilterPlace = "";
 
     }
+    @Override
+    public List<Reunion> getAllReunions(){
+        return mReunionsApiService.getReunions();
+    }
 
     /**
      * Get the meetings list

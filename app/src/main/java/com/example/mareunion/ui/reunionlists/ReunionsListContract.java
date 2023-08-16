@@ -10,6 +10,8 @@ public interface ReunionsListContract {
 
     interface Model extends MvpInterface.Model {
 
+        List<Reunion> getAllReunions();
+
         // get the meetings list, regarding the current filters set
         List<Reunion> getFilteredAndSortedReunions();
 
@@ -44,8 +46,12 @@ public interface ReunionsListContract {
         // update the meetings list in the view
         void updateReunions(List<Reunion> reunions);
 
+        // update meetings number
+        void updateNbReunions(int nbFilteredReunions, int nbTotalReunion);
+
         // update the filters labels in the view
         void updateFilters(String filterPlace, String filterStartDate, String filterEndDate);
+
 
         // trigger the meeting registration dialog
         void triggerReunionRegistrationDialog();
@@ -61,6 +67,7 @@ public interface ReunionsListContract {
 
         // trigger the date picker dialog
         void triggerDatePickerDialog(Instant date, boolean beginOrEnd);
+
 
     }
 
