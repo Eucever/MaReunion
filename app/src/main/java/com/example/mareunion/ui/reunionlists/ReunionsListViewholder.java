@@ -55,6 +55,9 @@ public class ReunionsListViewholder extends RecyclerView.ViewHolder {
     @BindView(R.id.meeting_persons_list)
     TextView mPersonsFlattenListText;
 
+    @BindView(R.id.nbParticipant_text)
+    TextView mPersonsNumberText;
+
     // Empty meeting (no persons invited yet) string
     @BindString(R.string.empty_meeting_persons_list)
     String mEmptyMeetingInvitedPersonsList;
@@ -130,14 +133,12 @@ public class ReunionsListViewholder extends RecyclerView.ViewHolder {
     private void setPersonsList() {
         // get persons
         Set<Participant> participants = mMeeting.getParticipants();
+        int nbParticipants = participants.size();
         // create persons formatter
         ParticipantsListFormatter personsListFormatter = new ParticipantsListFormatter(participants);
         // if persons list is empty, display a message
-        if(participants.isEmpty()) {
-            mPersonsFlattenListText.setText(mEmptyMeetingInvitedPersonsList);
-        } else {
-            // else, display persons list
             mPersonsFlattenListText.setText(personsListFormatter.format());
-        }
+            mPersonsNumberText.setText(String.valueOf(nbParticipants));
+
     }
 }
