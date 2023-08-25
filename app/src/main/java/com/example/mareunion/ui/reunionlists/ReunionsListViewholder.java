@@ -138,7 +138,7 @@ public class ReunionsListViewholder extends RecyclerView.ViewHolder {
         ParticipantsListFormatter personsListFormatter = new ParticipantsListFormatter(participants);
         // if persons list is empty, display a message
             mPersonsFlattenListText.setText(personsListFormatter.format());
-            mPersonsNumberText.setText(String.valueOf(nbParticipants));
+            mPersonsNumberText.setText(""+nbParticipants);
 
     }
 }
