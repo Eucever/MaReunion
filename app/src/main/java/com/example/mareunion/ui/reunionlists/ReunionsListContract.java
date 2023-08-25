@@ -9,7 +9,7 @@ import java.util.List;
 public interface ReunionsListContract {
 
     interface Model extends MvpInterface.Model {
-
+        // get all meetings
         List<Reunion> getAllReunions();
 
         // get the meetings list, regarding the current filters set
@@ -17,6 +17,9 @@ public interface ReunionsListContract {
 
         // get the filter place text
         String getFilterLieu();
+
+        // get the filter subject text
+        String getFilterSujet();
 
         // get the filter start date
         Instant getFilterStartDate();
@@ -36,6 +39,8 @@ public interface ReunionsListContract {
         // set the place filter
         void setFilterLieu(String filterPlace);
 
+        void setFilterSujet(String filterSubject);
+
     }
 
     /**
@@ -50,7 +55,7 @@ public interface ReunionsListContract {
         void updateNbReunions(int nbFilteredReunions, int nbTotalReunion);
 
         // update the filters labels in the view
-        void updateFilters(String filterPlace, String filterStartDate, String filterEndDate);
+        void updateFilters(String filterSubject, String filterPlace, String filterStartDate, String filterEndDate);
 
 
         // trigger the meeting registration dialog
@@ -80,7 +85,7 @@ public interface ReunionsListContract {
         void onRefreshReunionsListRequested();
 
         // on filters have changed
-        void onFiltersChanged(String filterLieu, String filterStartDate, String filterEndDate);
+        void onFiltersChanged(String filterSujet, String filterLieu, String filterStartDate, String filterEndDate);
 
         // drop a meeting request
         void dropReunionRequested(int position);
@@ -102,5 +107,7 @@ public interface ReunionsListContract {
 
         // save the filter place
         void saveFilterPlace(String filterPlace);
+
+        void saveFilterSubject(String filterSubject);
     }
 }

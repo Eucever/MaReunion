@@ -47,6 +47,7 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
         mView.updateReunions(reunions);
         // update the view with the up to date filters
         mView.updateFilters(
+                mModel.getFilterSujet(),
                 mModel.getFilterLieu(),
                 DateEasy.localeDateStringFromInstant(mModel.getFilterStartDate()),
                 DateEasy.localeDateStringFromInstant(mModel.getFilterEndDate())
@@ -62,7 +63,7 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
     }
 
     @Override
-    public void onFiltersChanged(String filterLieu, String filterStartDate, String filterEndDate){
+    public void onFiltersChanged(String filterSujet, String filterLieu, String filterStartDate, String filterEndDate){
         // set error to false
         boolean isError = false;
 
@@ -102,6 +103,7 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
         }
         // if there is no error
         mModel.setFilterLieu(filterLieu);
+        mModel.setFilterSujet(filterSujet);
         // if no error
         if (!isError) {
             // collapse filter
@@ -195,6 +197,11 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
     @Override
     public void saveFilterPlace(String filterPlace) {
         mModel.setFilterLieu(filterPlace);
+        onRefreshReunionsListRequested();
+    }
+    @Override
+    public void saveFilterSubject(String filterSubject) {
+        mModel.setFilterSujet(filterSubject);
         onRefreshReunionsListRequested();
     }
 }

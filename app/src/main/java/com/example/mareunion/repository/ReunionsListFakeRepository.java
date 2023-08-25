@@ -38,6 +38,13 @@ public class ReunionsListFakeRepository implements ReunionsListContract.Model {
     private String mFilterPlace;
 
     /**
+     * The subject filter
+     * AVOID TO STORE THIS STRING HERE, IN A REAL APP, USE A DAO
+     */
+
+    private String mFilterSubject;
+
+    /**
      * The external service
      */
     private final ReunionApiService mReunionsApiService;
@@ -54,6 +61,8 @@ public class ReunionsListFakeRepository implements ReunionsListContract.Model {
         mFilterEndDate = DateEasy.endOfDay(DateEasy.plusOneYear(DateEasy.now()));
         //Initialise le filtre de lieu a rien
         mFilterPlace = "";
+        //Initialise le filtre de sujet a rien
+        mFilterSubject = "";
 
     }
     @Override
@@ -72,9 +81,12 @@ public class ReunionsListFakeRepository implements ReunionsListContract.Model {
 
         // create a empty list of meetings and push the initial meetings list to the new list
         List<Reunion> filteredMeetings = new ArrayList<>(meetings);
+
+        // filter the meetings list
+        filterBySubject(filteredMeetings);
         // filter the meetings list
         filterByPlace(filteredMeetings);
-        // sort the meetings list
+        // filter the meetings list
         filterByTimeSpan(filteredMeetings);
         // sort the meetings list
         Collections.sort(filteredMeetings);
@@ -107,6 +119,26 @@ public class ReunionsListFakeRepository implements ReunionsListContract.Model {
             }
         }
     }
+    private void filterBySubject(List<Reunion> reunions) {
+        // create an iterator on the meetings list
+        Iterator<Reunion> meetingIterator = reunions.iterator();
+
+        if(mFilterSubject != null && !mFilterSubject.equals("")) {
+            // loop on the meetings list
+            while (meetingIterator.hasNext()) {
+                // if the next meeting subject do not match the filter subject
+                if (!meetingIterator
+                        .next()
+                        .getSujet()
+                        .toLowerCase()
+                        .startsWith(mFilterSubject.toLowerCase())) {
+                    // drop it from the list
+                    meetingIterator.remove();
+                }
+            }
+        }
+    }
+
 
     /**
      * Filter the meetings list by time span
@@ -133,6 +165,9 @@ public class ReunionsListFakeRepository implements ReunionsListContract.Model {
         }
 
     }
+
+    @Override
+    public String getFilterSujet(){return mFilterSubject;}
 
     /**
      * Get the filter place
@@ -193,8 +228,13 @@ public class ReunionsListFakeRepository implements ReunionsListContract.Model {
      * @param filterPlace the place filter
      */
     @Override
-        public void setFilterLieu(String filterPlace) {
+    public void setFilterLieu(String filterPlace) {
         mFilterPlace = filterPlace;
+    }
+
+    @Override
+    public void setFilterSujet(String filterSubject){
+        mFilterSubject = filterSubject;
     }
 
 }

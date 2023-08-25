@@ -77,6 +77,10 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
     @BindView(R.id.input_lieu)
     TextInputLayout mFilterPlaceTextInput;
 
+    // the subject text input filter
+    @BindView(R.id.input_sujet)
+    TextInputLayout mFilterSubjectTextInput;
+
     // the start date text input filter
     @BindView(R.id.input_start_date)
     TextInputLayout mFilterStartDateTextInput;
@@ -158,6 +162,10 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
 
         // Build a listener that trigger the presenter onFiltersChanged method
         View.OnClickListener listener = v -> mPresenter.onFiltersChanged(
+                // Set the subject text input filter value
+                Objects.requireNonNull(mFilterSubjectTextInput.getEditText())
+                        .getText()
+                        .toString(),
                 // Set the place text input filter value
                 Objects.requireNonNull(mFilterPlaceTextInput.getEditText())
                         .getText()
@@ -186,6 +194,7 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
         configureStartDateTextInput();
         configureEndDateTextInput();
         configurePlaceTextInput();
+        configureSubjectTextInput();
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -197,6 +206,19 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
                     final EditText editText = mFilterPlaceTextInput.getEditText();
                     // notify the presenter that the place text input filter might have changed
                     mPresenter.saveFilterPlace(editText.getText().toString());
+                }
+        );
+
+    }
+    @SuppressLint("ClickableViewAccessibility")
+    private void configureSubjectTextInput() {
+
+        // on focus change on the place text input filter, then notify the presenter accordingly
+        Objects.requireNonNull(mFilterSubjectTextInput.getEditText()).setOnFocusChangeListener(
+                (v, hasFocus) -> {
+                    final EditText editText = mFilterSubjectTextInput.getEditText();
+                    // notify the presenter that the place text input filter might have changed
+                    mPresenter.saveFilterSubject(editText.getText().toString());
                 }
         );
 
@@ -214,7 +236,7 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
                         mFilterStartDateTextInput.setErrorEnabled(false);
                         mPresenter.setFilterStartDate(editText.getText().toString());
                     } else {
-                        // we use a different call the presenter, to notify the presenter that the
+                        // we use a different call the presenter, to notify the presenter that
                         // we don't need to trigger the date picker dialog anymore
                         mPresenter.setFilterStartDateManual(editText.getText().toString());
                     }
@@ -295,12 +317,14 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
             mFilterEndDateTextInput.setVisibility(View.VISIBLE);
             mFilterApplyButton.setVisibility(View.VISIBLE);
             mFilterPlaceTextInput.setVisibility(View.VISIBLE);
+            mFilterSubjectTextInput.setVisibility(View.VISIBLE);
             mFilterCloseButton.setVisibility(View.VISIBLE);
         } else {
             mFilterStartDateTextInput.setVisibility(View.GONE);
             mFilterCloseButton.setVisibility(View.GONE);
             mFilterApplyButton.setVisibility(View.GONE);
             mFilterEndDateTextInput.setVisibility(View.GONE);
+            mFilterSubjectTextInput.setVisibility(View.GONE);
             mFilterPlaceTextInput.setVisibility(View.GONE);
             mFilterOpenButton.setVisibility(View.VISIBLE);
         }
@@ -326,11 +350,13 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
 
 
     @Override
-    public void updateFilters(String filterPlace, String filterStartDate, String filterEndDate) {
+    public void updateFilters(String filterSubject,String filterPlace, String filterStartDate, String filterEndDate) {
 
         //Cleanup errors function
         cleanupErrors();
 
+        // update the subject text filter
+        Objects.requireNonNull(mFilterSubjectTextInput.getEditText()).setText(filterSubject);
         // update the place text filter
         Objects.requireNonNull(mFilterPlaceTextInput.getEditText()).setText(filterPlace);
         // update the start date text filter
@@ -343,6 +369,9 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
         );
 
         // put the selection cursor at the end of the text
+        mFilterSubjectTextInput.getEditText().setSelection(
+                mFilterSubjectTextInput.getEditText().getText().length()
+        );
         mFilterPlaceTextInput.getEditText().setSelection(
                 mFilterPlaceTextInput.getEditText().getText().length()
         );
