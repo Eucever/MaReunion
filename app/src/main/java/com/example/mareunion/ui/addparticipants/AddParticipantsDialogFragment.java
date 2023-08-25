@@ -120,6 +120,7 @@ public class AddParticipantsDialogFragment extends DialogFragment implements Add
      */
     @Override
     public void updateParticipantsList(Set<Participant> participantsSet) {
+        boolean isError = false;
         // if the person set is empty, display a message
         if(participantsSet.isEmpty()){
             mAddPersonsFullListText.setText("");
@@ -230,15 +231,29 @@ public class AddParticipantsDialogFragment extends DialogFragment implements Add
             public void onClick(View v) {
                 // retrieve the email from the text input
                 String email = mAddPersonsTextInput.getText().toString();
-                // build the corresponding Person object from the email
-                Participant participant = new Participant(email);
-                // tell the presenter to add the person to the list
-                mPresenter.onParticipantAdded(participant);
-                // clear the text input
-                mAddPersonsTextInput.setText("");
-                // hide the add button
-                mAddPersonsBtn.setVisibility(View.GONE);
+                if(email.contains("@")){
+                    cleanupMailError();
+                    // build the corresponding Person object from the email
+                    Participant participant = new Participant(email);
+                    // tell the presenter to add the person to the list
+                    mPresenter.onParticipantAdded(participant);
+                    // clear the text input
+                    mAddPersonsTextInput.setText("");
+                    // hide the add button
+                    mAddPersonsBtn.setVisibility(View.GONE);
+                }
+                else {
+                    setErrorNotValidMail();
+                }
+
             }
         });
+    }
+    private void setErrorNotValidMail(){
+        mAddPersonsFullListText.setError("Not Valid mail");
+    }
+
+    private void cleanupMailError(){
+        mAddPersonsFullListText.setError(null);
     }
 }
