@@ -5,6 +5,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -274,7 +275,10 @@ public class AddReunionDialogFragment extends DialogFragment implements AddReuni
 
                 false,
 
-                (date) -> mPresenter.onReunionDateSelected(date)
+                (date) ->{
+                    Log.i("addreuniondialogfrag", "execution du corps de la lambda, c'est a dire je notifie le presenter du add reunion dialog qu'une date a été choisis par l'utilisateur :" + date );
+                    mPresenter.onReunionDateSelected(date);
+                }
         );
 
         fragment.display(getFragmentManager());

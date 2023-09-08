@@ -1,5 +1,7 @@
 package com.example.mareunion.repository;
 
+import android.util.Log;
+
 import com.example.mareunion.ui.datepicker.DatePickerContract;
 import com.example.mareunion.ui.utils.DateEasy;
 
@@ -96,6 +98,7 @@ public class DatePickerFakeRepository implements DatePickerContract.Model {
         } else {
             mDate = DateEasy.computeInstantFromLocalDate(year, month, day);
         }
+        Log.i("datepickermodel" , "J'execute la fonction onDateChangedListener déclaré lors de la création de la factory datepicker, avec comme argument : " + mDate.toString());
         mOnDateChangedListener.onDateChanged(mDate);
     }
 

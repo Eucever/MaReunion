@@ -55,6 +55,7 @@ public class ReunionsListViewholder extends RecyclerView.ViewHolder {
     @BindView(R.id.meeting_persons_list)
     TextView mPersonsFlattenListText;
 
+    //number of person in the list
     @BindView(R.id.nbParticipant_text)
     TextView mPersonsNumberText;
 
@@ -136,9 +137,9 @@ public class ReunionsListViewholder extends RecyclerView.ViewHolder {
         int nbParticipants = participants.size();
         // create persons formatter
         ParticipantsListFormatter personsListFormatter = new ParticipantsListFormatter(participants);
-        // if persons list is empty, display a message
-            mPersonsFlattenListText.setText(personsListFormatter.format());
-            mPersonsNumberText.setText(""+nbParticipants);
+
+        mPersonsFlattenListText.setText(personsListFormatter.format());
+        mPersonsNumberText.setText(""+nbParticipants);
 
     }
 }

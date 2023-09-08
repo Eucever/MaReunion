@@ -1,6 +1,8 @@
 package com.example.mareunion.ui.datepicker;
 
 
+import android.util.Log;
+
 public class DatePickerPresenter implements DatePickerContract.Presenter{
 
 
@@ -34,6 +36,8 @@ public class DatePickerPresenter implements DatePickerContract.Presenter{
      */
     @Override
     public void onDatePicked(int year, int month, int day) {
+        Log.i("datepickerpresenter", "Le presenter est appeler par la vue car un choix de date a été fait : "+ year + " " + month +" "+ day);
+        Log.i("datepickerpresenter", "Le presenter appele le model pour propager la date selectionner ");
         mModel.saveDate(year, month, day);
     }
 

@@ -5,6 +5,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
@@ -113,8 +114,12 @@ public class DatePickerFragment extends DialogFragment implements DatePickerCont
         // create the android date picker dialog
         DatePickerDialog datePickerDialog = new DatePickerDialog(
                 Objects.requireNonNull(getContext()),
-                // when android notify a date change, we notify the presenter
-                (view, year, month, day) -> mPresenter.onDatePicked(year, month, day),
+                // when android notifies a date change, we notify the presenter
+                (view, year, month, day) ->{
+                    Log.i("datepickerfragment", "android nous notifie du choix de date de l'utilisateur : "+ year + " "+ month +" "+day);
+                    mPresenter.onDatePicked(year, month, day);
+
+                },
                 // set the initial date
                 DateEasy.getZonedInstantYear(mDate),
                 DateEasy.getZonedInstantMonth(mDate),
