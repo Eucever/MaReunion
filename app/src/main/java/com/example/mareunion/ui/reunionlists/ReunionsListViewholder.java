@@ -101,7 +101,9 @@ public class ReunionsListViewholder extends RecyclerView.ViewHolder {
         // update the ui accordingly (date, subject, place)
         mDateText.setText(DateEasy.localeSpecialStringFromInstant(reunion.getDate()));
         mSubjectText.setText(reunion.getSujet());
+        mSubjectText.setContentDescription(reunion.getSujet());
         mPlaceText.setText(reunion.getLieu().getEndroit());
+        mPlaceText.setContentDescription(reunion.getLieu().getEndroit());
         // update the persons invited to the meeting list
         setPersonsList();
     }

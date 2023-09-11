@@ -38,6 +38,7 @@
                     android:id="@+id/addMeeting_personList"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="Liste des participants"
                     android:text="TextView"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -82,6 +83,7 @@
                     android:id="@+id/addMeeting_DateTextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:contentDescription="Renseigner la date de la reunion"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/addMeeting_LieuTextInput">
 

@@ -84,7 +84,7 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
             }
         }
 
-        // is the end date is empty
+        // if the end date is empty
         if (filterEndDate.isEmpty()) {
             // set the end date to null
             mModel.setFilterEndDate(null);
@@ -202,6 +202,12 @@ public class ReunionsListPresenter implements ReunionsListContract.Presenter {
     @Override
     public void saveFilterSubject(String filterSubject) {
         mModel.setFilterSujet(filterSubject);
+        onRefreshReunionsListRequested();
+    }
+
+    @Override
+    public void resetAllfilters(){
+        mModel.resetFilters();
         onRefreshReunionsListRequested();
     }
 }

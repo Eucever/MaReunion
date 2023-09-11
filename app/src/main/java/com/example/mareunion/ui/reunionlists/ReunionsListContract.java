@@ -41,6 +41,8 @@ public interface ReunionsListContract {
 
         void setFilterSujet(String filterSubject);
 
+        void resetFilters();
+
     }
 
     /**
@@ -109,5 +111,7 @@ public interface ReunionsListContract {
         void saveFilterPlace(String filterPlace);
 
         void saveFilterSubject(String filterSubject);
+
+        void resetAllfilters();
     }
 }

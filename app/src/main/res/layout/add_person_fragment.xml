@@ -41,6 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
+                    android:contentDescription="Email"
                     android:text="Email :"
                     app:layout_constraintBottom_toTopOf="@+id/editMail"
                     app:layout_constraintStart_toStartOf="parent" />

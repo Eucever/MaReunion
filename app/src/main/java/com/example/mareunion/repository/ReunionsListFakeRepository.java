@@ -237,4 +237,14 @@ public class ReunionsListFakeRepository implements ReunionsListContract.Model {
         mFilterSubject = filterSubject;
     }
 
+    @Override
+    public void resetFilters(){
+        mFilterSubject = "";
+        mFilterPlace = "";
+        mFilterStartDate = DateEasy.startOfDay(DateEasy.now());
+        mFilterEndDate = DateEasy.endOfDay(DateEasy.plusOneYear(DateEasy.now()));
+
+
+    }
+
 }

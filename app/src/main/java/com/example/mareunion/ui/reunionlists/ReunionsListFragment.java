@@ -73,6 +73,9 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
     @BindView(R.id.button_apply)
     Button mFilterApplyButton;
 
+    @BindView(R.id.button_reset)
+    Button mFilterResetButton;
+
     // the place text input filter
     @BindView(R.id.input_lieu)
     TextInputLayout mFilterPlaceTextInput;
@@ -141,6 +144,9 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
         mRecyclerView.setAdapter(mMeetingsListAdapter);
         // Configure the initial filters
         configureFilters();
+        // Configure reset filters button
+        mFilterResetButton.setOnClickListener(v -> mPresenter.resetAllfilters());
+
         // Return the view
         return view;
     }
@@ -189,6 +195,7 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
         mFilterOpenButton.setOnClickListener(listener);
         // On collapse button, set the listener just created
         mFilterCloseButton.setOnClickListener(listener);
+
 
         // Configure the text input filters
         configureStartDateTextInput();
@@ -319,6 +326,7 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
             mFilterPlaceTextInput.setVisibility(View.VISIBLE);
             mFilterSubjectTextInput.setVisibility(View.VISIBLE);
             mFilterCloseButton.setVisibility(View.VISIBLE);
+            mFilterResetButton.setVisibility(View.VISIBLE);
         } else {
             mFilterStartDateTextInput.setVisibility(View.GONE);
             mFilterCloseButton.setVisibility(View.GONE);
@@ -326,6 +334,7 @@ public class ReunionsListFragment extends Fragment implements ReunionsListContra
             mFilterEndDateTextInput.setVisibility(View.GONE);
             mFilterSubjectTextInput.setVisibility(View.GONE);
             mFilterPlaceTextInput.setVisibility(View.GONE);
+            mFilterResetButton.setVisibility(View.GONE);
             mFilterOpenButton.setVisibility(View.VISIBLE);
         }
     }

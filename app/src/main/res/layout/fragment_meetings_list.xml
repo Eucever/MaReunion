@@ -31,6 +31,7 @@
                 android:id="@+id/input_sujet"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="Renseigner le sujet a filtrer"
                 android:hint="Filtrer par sujet"
                 android:visibility="gone">
 
@@ -44,6 +45,7 @@
                 android:id="@+id/input_lieu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="Renseigner Le lieu a filtrer"
                 android:hint="Filtrer par lieu"
                 android:visibility="gone">
 
@@ -87,7 +89,16 @@
                 android:id="@+id/button_apply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:contentDescription="Bouton de filtrage"
                 android:text="Appliquer"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/button_reset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="Bouton de reinitialisation des reunions"
+                android:text="Reset des Filtres"
                 android:visibility="gone" />
 
             <ImageButton
